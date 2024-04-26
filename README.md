@@ -23,11 +23,12 @@ A Variational Network (VN)-based reconstruction framework for Magnetic Resonance
 
 ### Usage
 #### Data Preparation
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11071251.svg)](https://doi.org/10.5281/zenodo.11071251)
 - MRI data are stored in the `hdf5` format containing following datasets:
   - `grappa`: target data (y $\times$ x $\times$ Slice)
   - `kdata`: k-space data (nCoil $\times$ PE $\times$ RO $\times$ Slice)
   - `sm_espirit`: sensitivity maps (nCoil $\times$ y $\times$ x $\times$ Slice)
-- The `sample_data` directory contains sample data for training, validation, and testing. These data are provided to give an idea of the data structure. You can find the data in [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11071251.svg)](https://doi.org/10.5281/zenodo.11071251). **In-vivo data for traial run will be available soon**.
+- The `sample_data` directory contains sample data for training, validation, and testing. These data are provided to give an idea of the data structure. You can find the data [here](https://doi.org/10.5281/zenodo.11071251). **In-vivo data for traial run will be available soon**.
 - Data splition for training, validation, and testing is done by the `sample_data/dataset.csv` file. Feel free to add additional information about data in this file.
 - Replace `path > data_path` in the `config.json` file with the path to the data directory.
 #### Run
@@ -41,4 +42,5 @@ To run the framework, first define correct configurations in the `config.json` f
 1. Set the value of the `client_arguments > mode` field to `test` in the `config.json` file.
 2. Input the log directory name in the correct `ckpt_data`, i.e., `yyyymmdd_hhmmss`. The log directory should be placed in the `path > log_path` directory.
 3. The output files are saved in the `path > log_path/npys/FILENAME` directory.
+4. **The trained wegiths will be available soon with in-vivo data.**
 
