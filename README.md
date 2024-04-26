@@ -14,12 +14,20 @@ A Variational Network (VN)-based reconstruction framework for Magnetic Resonance
 ## Installation and Usage
 ### Installation 
 1. Create a new conda environment
-   > - conda create -n mrcp_dlrecon python=3.8.17
-   > - conda activate mrcp_dlrecon
+```sh
+conda create -n mrcp_dlrecon python=3.8.17
+```
+```sh
+conda activate mrcp_dlrecon
+```
 2. Install `PyTorch` on the conda environment
-   > - conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia
+```sh
+conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia
+```
 3. Clone the repository then navigate to the `MRCP_DLRecon` root directory. Run
-   > - pip install -e . 
+```sh
+pip install -e . 
+```
 
 ### Usage
 #### Data Preparation
