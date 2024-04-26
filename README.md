@@ -27,7 +27,7 @@ A Variational Network (VN)-based reconstruction framework for Magnetic Resonance
   - `grappa`: target data (y $\times$ x $\times$ Slice)
   - `kdata`: k-space data (nCoil $\times$ PE $\times$ RO $\times$ Slice)
   - `sm_espirit`: sensitivity maps (nCoil $\times$ y $\times$ x $\times$ Slice)
-- The `sample_data` directory contains sample data for training, validation, and testing. These data are provided to give an idea of the data structure. You can find the data in <DOI>. **In-vivo data for traial run will be available soon**.
+- The `sample_data` directory contains sample data for training, validation, and testing. These data are provided to give an idea of the data structure. You can find the data in LINK_TO_DOI. **In-vivo data for traial run will be available soon**.
 - Data splition for training, validation, and testing is done by the `sample_data/dataset.csv` file. Feel free to add additional information about data in this file.
 - Replace `path > data_path` in the `config.json` file with the path to the data directory.
 #### Run
