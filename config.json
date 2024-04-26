@@ -1,0 +1,54 @@
+{ 	
+	"memo": "WRITE YOUR NOTE HERE, i.e., ABOUT THE RUN",
+	"ckpt_date": "",
+
+	"client_arguments": {
+		"mode": "train",
+		"__mode": ["train", "test"],
+		"__discription": "For test, mode in 'client_arguments' and ckpt_data should be adapted."		
+	},
+
+	"path": {
+		"data_path": "sample_data/",
+		"log_path": "logs/"
+	},
+	
+	"data_transform":{
+		"target_acc": 6,
+		"__target_acc": "An acceleration factor for retrospective undersampling (The acceleration factor of the raw file is 2, and if target_acc is 6, then 3 times further acceleration is applied to the raw file.)"
+	},
+
+	"data_config":{
+		"batch_size": 1,
+		"is_prototype": false,
+		"num_workers": 4
+	},
+	
+	"module_config":{
+		"num_cascades": 12,
+		"pools": 4,
+		"chans": 32,
+		"lr": 0.001,
+		"lr_step_size": 40,
+		"lr_gamma": 0.1,
+		"weight_decay": 0.0
+	},
+	
+	"trainer_config":{
+		"accelerator": "gpu",
+		"devices": 1,
+		"seed": 42,
+		"deterministic": true,
+		"max_epochs": 100,
+		"enable_checkpointing": true,
+		"__enable_checkpointing": "Whether to save chkp"
+	},
+
+	"enable_checkpointing":{
+		"__comment": "Only set callbacks.ModelCheckpoint when the checkpoint is set to be saved",
+		"save_top_k": true,
+		"verbose": true,
+		"monitor": "validation_loss",
+		"mode": "min"
+	}
+}
