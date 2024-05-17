@@ -17,5 +17,5 @@ def get_file_list(root:Path, data_partition):
     return file_list
 
 def filter_data(dataset, root, data_partition):
-    filtered_dataset = dataset[(dataset['Acc'] == 'x2') & (dataset['Split'] == data_partition)]
+    filtered_dataset = dataset[(dataset['Split'] == data_partition)]
     return [root / f"{i}.h5"  for i in filtered_dataset['Name']] # [PATH_TO_DATASET/FILE_NAME.h5, ...]

@@ -73,11 +73,10 @@ class SliceDataset(torch.utils.data.Dataset):
             sens_maps = hf["sm_espirit"][..., dataslice]  # shape: (ncoil, y, x, slice)
             
             attrs = dict(hf.attrs)
-            base_acc = 2 # base_acc is hard coded to 2 for code publication as our MRCP data is acquired with R=2.
-            attrs["acceleration"] = self.target_acc // base_acc
-            attrs["target_acc"] = self.target_acc
+            base_acc = attrs['base_acc'] # Either 2 or 6 (Base acceleration factor)
+            target_acc = self.target_acc
 
         dinfo = [f"{fname.stem}_{dataslice}", fname.parent.stem] # data info: [filename, foldername] to store SENSE initializations
-        sample = self.transform(kspace, target, attrs, fname.name, dataslice, sens_maps, dinfo)
+        sample = self.transform(kspace, target, target_acc, base_acc, fname.name, dataslice, sens_maps, dinfo)
 
         return sample

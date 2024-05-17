@@ -1,4 +1,4 @@
 Name,Acc,Split
-sample1,2x,train
-sample2,2x,val
-sample3,2x,test
+data1,2x,train
+data2,2x,val
+data3,6x,test

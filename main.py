@@ -68,7 +68,7 @@ def cli_main(args):
     if args.mode == "train":
         trainer.fit(model, datamodule=data_module)
     elif args.mode == "test":
-        trained_model = VarNetModule.load_from_checkpoint(args.resume_from_checkpoint)
+        trained_model = VarNetModule.load_from_checkpoint(args.resume_from_checkpoint, strict=False)
         trainer.test(trained_model, datamodule=data_module)
     else:
         raise ValueError(f"unrecognized mode {args.mode}")

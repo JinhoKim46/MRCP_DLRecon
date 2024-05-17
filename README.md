@@ -2,7 +2,7 @@
 
 # Deep Learning-based MRCP Reconstruction 
 
-A Variational Network (VN)-based reconstruction framework for Magnetic Resonance Cholangiopancreatography (MRCP) imaging. We train a VN model on the 3T six-fold retrospectively undersampled MRCP as input and 3T two-fold accelerated MRCP as target. We evaluate the model for six-fold retrospective and prosepctive undersampling acuiqred at 3T and 0.55T. 
+A Variational Network (VN)-based reconstruction framework for Magnetic Resonance Cholangiopancreatography (MRCP) imaging. We train a VN model on the 3T six-fold retrospectively undersampled MRCP as input and 3T two-fold accelerated MRCP as the target. We evaluate the model for six-fold retrospective and prospective undersampling acquired at 3T and 0.55T. 
 
 
 ## Features of the Framework
@@ -31,24 +31,27 @@ pip install -e .
 
 ### Usage
 #### Data Preparation
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11071251.svg)](https://doi.org/10.5281/zenodo.11071251)
-- MRI data are stored in the `hdf5` format containing following datasets:
-  - `grappa`: target data (y $\times$ x $\times$ Slice)
-  - `kdata`: k-space data (nCoil $\times$ PE $\times$ RO $\times$ Slice)
-  - `sm_espirit`: sensitivity maps (nCoil $\times$ y $\times$ x $\times$ Slice)
-- The `sample_data` directory contains sample data for training, validation, and testing. These data are provided to give an idea of the data structure. You can find the data [here](https://doi.org/10.5281/zenodo.11071251). **In-vivo data for traial run will be available soon**.
-- Data splition for training, validation, and testing is done by the `sample_data/dataset.csv` file. Feel free to add additional information about data in this file.
-- Replace `path > data_path` in the `config.json` file with the path to the data directory.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11209901.svg)](https://doi.org/10.5281/zenodo.11209901)
+
+- MRI data are stored in the `HDF5` format containing the following structures:
+  - Datasets:
+    - `grappa`: target data (y $\times$ x $\times$ Slice)
+    - `kdata`: $k$-space data (nCoil $\times$ PE $\times$ RO $\times$ Slice)
+    - `sm_espirit`: ESPIRiT-based sensitivity maps (nCoil $\times$ y $\times$ x $\times$ Slice)
+  - Attributes:
+    - `base_acc`: acceleration factor of the raw data. 
+- The `sample_data` directory contains sample MRCP data for training, validation, and testing. We provide **two retrospective two-fold 3D MRCP data** and **one prospective six-fold 3D MRCP data**. In the `sample_data/dataset.csv`, two retrospective undersamplings are defined for training and validation, and the prospective undersampling is marked for testing. You can find the data [here](https://doi.org/10.5281/zenodo.11209901). Additional information, such as header information, is ignored in the sample data. 
+- Data splitting for training, validation, and testing is done by the `sample_data/dataset.csv` file.
+- Replace `path > data_path` in the `config.json` file with the actual path to the data.
 #### Run
-To run the framework, first define correct configurations in the `config.json` file. 
+To run the framework, first define the correct configurations in the `config.json` file. 
 ##### Train
 1. Set the value of the `client_arguments > mode` field to `train` in the `config.json` file.
 2. Run `main.py` script
-3. `SENSE` reconstructions for input are generated and saved in the `CURRENT_PATH/sense/XXX` directory as `xxx.npy`. Therefore, the first run will be slower than the following runs. 
-4. Log files containing `checkpoints`, `lightning_logs` for tensorboard, and `script_dump` are stored in `path > log_path` you set in the `config.json` file. 
+3. `SENSE` reconstructions for input are generated and saved in the `CURRENT_PATH/sense/XXX` directory as `xxx.npy`. Therefore, the first iteration will be slower than the following iterations. 
+4. Log files containing `checkpoints/`, `lightning_logs/`, and `script_dump/` are stored in `path > log_path/yyyymmdd_hhmmss`. 
 ##### Test
-1. Set the value of the `client_arguments > mode` field to `test` in the `config.json` file.
-2. Input the log directory name in the correct `ckpt_data`, i.e., `yyyymmdd_hhmmss`. The log directory should be placed in the `path > log_path` directory.
-3. The output files are saved in the `path > log_path/npys/FILENAME` directory.
-4. **The trained wegiths will be available soon with in-vivo data.**
-
+1. Set the `client_arguments > mode` field to `test` in the `config.json` file.
+2. Set the `ckpt_data` field to the log directory, i.e., `yyyymmdd_hhmmss`, containing the checkpoint file. The log directory should be placed in the `path > log_path`.
+3. The output files are saved in the `path > log_path/ckpt_data/npys/FILENAME`.
+- To run the framework with the provided sample data, set the `ckpt_data` field to `trained_model` and `client_arguments > mode` field to `test`. 

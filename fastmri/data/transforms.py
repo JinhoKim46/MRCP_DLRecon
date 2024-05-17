@@ -157,7 +157,8 @@ class VarNetDataTransform:
             self,
             kspace: np.ndarray,
             target: np.ndarray,
-            attrs: Dict,
+            target_acc: int,
+            base_acc: int,
             fname: str,
             slice_num: int,
             sens_maps: Union[torch.Tensor, bool],
@@ -165,21 +166,23 @@ class VarNetDataTransform:
     ) -> VarNetSample:
         """
         Args:
-            kspace: Input k-space of shape (num_coils, PE, RO, slice) for
-                multi-coil data.
-            target: Target image of shape (y, x, slice).
-            attrs: Acquisition related information.
-            fname: File name.
-            slice_num: Serial number of the slice.
-            sens_map: sensitivity map of shape (num_coils, y, x, slice).
-            dinfo: Data info to store SENSE initializations. (filename, foldername)
+            kspace:             Input k-space, of whice shape is (num_coils, PE, RO, slice) for
+                                multi-coil data.
+            target:             Reference image, of which shape is (y, x, slice).
+            target_acc:         The target acceleration factor to undersample.
+            base_acc:           Acceleration factor of the raw data (2 or 6).
+            fname:              File name.
+            slice_num:          Serial number of the slice.
+            sens_map:           sensitivity map of shape (num_coils, y, x, slice).
+            dinfo:              Data info to store SENSE initializations. (filename, foldername)
 
         Returns:
             A VarNetSample.
         """
         GT_kspace_torch = to_tensor(kspace)
-
-        kspace_us = undersample(kspace, rate=attrs["acceleration"])
+        
+        # if the raw data is two-fold accelerated, then undersmple the raw data to the target acceleration factor.
+        kspace_us = undersample(kspace, rate=target_acc // base_acc) if base_acc == 2 else kspace
         
         train_torch = utils.sense(kspace_us, sens_maps, dinfo)
         mask = create_mask(kspace_us)
@@ -197,7 +200,7 @@ class VarNetDataTransform:
             mask=mask,
             max_value=max_value,
             sens_maps=to_tensor(sens_maps),
-            rate=attrs['target_acc']
+            rate=target_acc
         )
 
         return sample

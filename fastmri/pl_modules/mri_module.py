@@ -59,7 +59,7 @@ class MriModule(pl.LightningModule):
     Other methods from LightningModule can be overridden as needed.
     """
 
-    def __init__(self, num_log_images: int = 10):
+    def __init__(self, num_log_images: int = 10, **kwargs):
         """
         Args:
             num_log_images: Number of images to log. Defaults to 10.
