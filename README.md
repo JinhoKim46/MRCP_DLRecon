@@ -40,7 +40,7 @@ pip install -e .
     - `sm_espirit`: ESPIRiT-based sensitivity maps (nCoil $\times$ y $\times$ x $\times$ Slice)
   - Attributes:
     - `base_acc`: acceleration factor of the raw data. 
-- The `sample_data` directory contains sample MRCP data for training, validation, and testing. We provide **two retrospective two-fold 3D MRCP data** and **one prospective six-fold 3D MRCP data**. In the `sample_data/dataset.csv`, two retrospective undersamplings are defined for training and validation, and the prospective undersampling is marked for testing. You can find the data [here](https://doi.org/10.5281/zenodo.11209901). Additional information, such as header information, is ignored in the sample data. 
+- The `sample_data` directory contains sample MRCP data for training, validation, and testing. We provide **two two-fold (2x) 3D MRCP** and **one six-fold (6x) 3D MRCP**. In the `sample_data/dataset.csv`, the two 2x MRCP data are defined for training and validation, and the 6x MRCP data is marked for testing. You can find the data [here](https://doi.org/10.5281/zenodo.11209901). Additional information, such as header information, is ignored in the sample data. 
 - Data splitting for training, validation, and testing is done by the `sample_data/dataset.csv` file.
 - Replace `path > data_path` in the `config.json` file with the actual path to the data.
 #### Run
