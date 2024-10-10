@@ -1,0 +1,2 @@
+data_path: /path/to/data # /.../MRCP_DLRecon/sample_data
+log_path: /path/to/logs/ # /.../MRCP_DLRecon/logs

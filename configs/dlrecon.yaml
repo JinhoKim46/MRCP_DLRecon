@@ -1,0 +1,51 @@
+seed_everything: 42
+model:
+  training_manner: sv # [sv, ssv]
+  num_cascades: 12    
+  num_resblocks: 8      
+  chans: 64            
+  lr: 0.0003          
+  lr_step_size: 100
+  lr_gamma: 0.1   
+  weight_decay: 0.0001
+  cgdc_iter: 10  
+data:
+  batch_size: 1
+  is_prototype: True
+  volume_sample_rate: null # [null, float(0~1)]
+  data_selection: null # [null, str, list] / specify the data name to run
+transform:
+  num_acs: 24
+  mask_type: equispaced 
+  acceleartion_rate: 6
+  ssdu_mask_type: gaussian1d 
+  ssdu_mask_center_block: 5
+  ssdu_mask_rho: 0.4
+  ssdu_mask_std_scale: 4
+trainer:
+  accelerator: gpu
+  devices: 1,
+  deterministic: True 
+  max_epochs: 100
+  use_distributed_sampler: True
+  callbacks:
+    - class_path: pytorch_lightning.callbacks.EarlyStopping
+      init_args:
+        monitor: val_loss
+        patience: 30
+        mode: min
+    - class_path: pytorch_lightning.callbacks.LearningRateMonitor
+      init_args:
+        logging_interval: 'epoch'
+    - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+      init_args:
+        monitor: val_loss
+        mode: min
+        save_top_k: 1        
+        verbose: True 
+callback:
+  val_log_images: 16
+  val_log_interval: 10
+  checkpoint_monitor: val_loss
+  checkpoint_mode: max
+float32_matmul_precision: high # ["highest", "high", "medium"]

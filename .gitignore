@@ -1,15 +1,20 @@
 # Ignore log files but distributed model
 logs/*
-!logs/trained_model/
-logs/trained_model/*
-!logs/trained_model/checkpoints/
+!logs/SSV/
+logs/SSV/*
+!logs/SSV/checkpoints/
+!logs/SV/
+logs/SV/*
+!logs/SV/checkpoints/
 
-# Ignore intermediate SENSE recons
-sense/
-
-# ignore data
+# Ignore data
 # Data is available on 
 sample_data/*.h5
 
-*/__pycache__/
-fastmri.egg-info/
+# Ignore IDE related
+.vscode/
+**/__pycache__/
+*.egg-info/
+
+# Ignore result figures
+Figures/
