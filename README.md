@@ -32,7 +32,7 @@ pip install -e .
 
 ## Usage
 ### Data Preparation
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11209901.svg)](https://doi.org/10.5281/zenodo.11209901)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13912092.svg)](https://doi.org/10.5281/zenodo.13912092)
 
 - MRI data are stored in the `HDF5` format containing the following structures:
   - Datasets:
@@ -40,7 +40,7 @@ pip install -e .
     - `kdata_raw`: Raw $k$-space data (x2) (nCoil $\times$ PE $\times$ RO $\times$ Slice)
     - `kdata_fs`: Fully-sampled $k$-space data from `kdata_raw` using GRAPPA (nCoil $\times$ PE $\times$ RO $\times$ Slice)
     - `sm_espirit`: ESPIRiT-based sensitivity maps (nCoil $\times$ y $\times$ x $\times$ Slice)
-- The `sample_data` directory contains sample MRCP data for training, validation, and testing. We provide **two two-fold (2x) 3D MRCP** and **one six-fold (6x) 3D MRCP**. In the `sample_data/dataset.csv`, the two 2x MRCP data are defined for training and validation, and the 6x MRCP data is marked for testing. You can find the data [here](https://doi.org/10.5281/zenodo.11209901). Additional information, such as header information, is ignored in the sample data. 
+- The `sample_data` directory contains sample MRCP data for training, validation, and testing. We provide **two two-fold (2x) 3D MRCP** and **one six-fold (6x) 3D MRCP**. In the `sample_data/dataset.csv`, the two 2x MRCP data are defined for training and validation, and the 6x MRCP data is marked for testing. You can find the data [here](https://doi.org/10.5281/zenodo.13912092). Additional information, such as header information, is ignored in the sample data. 
 - Data splitting for training, validation, and testing is done by the `sample_data/dataset.csv` file.
 - Replace `data_path` in the `configs/paths.yaml` file with the actual path to the data.
 ### Run
