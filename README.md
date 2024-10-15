@@ -2,7 +2,7 @@
 
 # Deep Learning-based MRCP Reconstruction 
 
-A Variational Network (VN)-based reconstruction framework for Magnetic Resonance Cholangiopancreatography (MRCP) imaging. We train a VN model on the 3T six-fold retrospectively undersampled MRCP as input and 3T two-fold accelerated MRCP as the target. We evaluate the model for six-fold retrospective and prospective undersampling acquired at 3T and 0.55T. 
+Deep Learning-based (DL) reconstruction framework for Magnetic Resonance Cholangiopancreatography (MRCP) imaging. We use ResNet-based DL models for supervised (SV) and self-supervised training. We train DL models on the 3T six-fold retrospectively undersampled MRCP. We evaluate the model for six-fold retrospective and prospective undersampling acquired at 3T and 0.55T. 
 
 
 ## Features of the Framework
