@@ -5,12 +5,6 @@
 Deep Learning-based (DL) reconstruction framework for Magnetic Resonance Cholangiopancreatography (MRCP) imaging. We use ResNet-based DL models for supervised (SV) and self-supervised training. We train DL models on the 3T six-fold retrospectively undersampled MRCP. We evaluate the model for six-fold retrospective and prospective undersampling acquired at 3T and 0.55T. 
 
 
-## Features of the Framework
-- Input: SENSE-based synthesized k-space data on six-fold retrospective undersampling instead of zero-filled k-space data
-- Target: GRAPPA reconstruction of two-fold accelerated MRCP (clinical standard)
-- Sensitivity maps: Predefined using an ESPIRiT algorithm
-- Unrolled network: The Variational Network model
-
 ## Installation
 1. Clone the repository then navigate to the `MRCP_DLRecon` root directory.
 ```sh
