@@ -1,5 +1,3 @@
-:exclamation: These implementations are based on the original fastMRI repository by Facebook Research. The original repository can be found [here](https://github.com/facebookresearch/fastMRI).
-
 # Deep Learning-based MRCP Reconstruction 
 
 Deep Learning-based (DL) reconstruction framework for Magnetic Resonance Cholangiopancreatography (MRCP) imaging. We use ResNet-based DL models for supervised (SV) and self-supervised training. We train DL models on the 3T six-fold retrospectively undersampled MRCP. We evaluate the model for six-fold retrospective and prospective undersampling acquired at 3T and 0.55T. 
