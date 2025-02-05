@@ -64,7 +64,7 @@ python main.py test --config configs/dlrecon.yaml --name run_name
 2. The output files are saved in `log_path/run_name/npys/FILENAME`.
 
 ## Citation
-Please cite [the following paper](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/nbm.70002) if it is helpful for your research :)
+Please cite the following [paper](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/nbm.70002) if this repository is helpful for your research :)
   
   ```
   Kim, J., Nickel, M. and Knoll, F. (2025), Deep Learning-Based Accelerated MR Cholangiopancreatography Without Fully-Sampled Data. NMR in Biomedicine, 38: e70002. https://doi.org/10.1002/nbm.70002
